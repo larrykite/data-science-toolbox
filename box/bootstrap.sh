@@ -16,7 +16,9 @@ mkdir -p $DOWNLOADS
 log 'Adding repos for node and R...'
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu precise/" >> /etc/apt/sources.list'
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 log 'Retrieving updated list of packages...'
 apt-get update
